@@ -9,12 +9,14 @@ public:
     sTYPE data; //данные с элементе
     mstack *next; //указатель на след эл стека
     mstack *top; //указатель на низ стека
+    int size=0; //зачем?
 
     mstack (): top(nullptr)
     {}
     void push (const sTYPE);
     void pop (); //удаление эл из стека
-   // ~mstack();
+    void print ();
+    ~mstack();
 };
 
 template <typename sTYPE>
@@ -30,8 +32,9 @@ void mstack<sTYPE>::push(const sTYPE value) {
         q->next = top;
         top = q;
         qDebug() << "smth" << top;
-
     }
+    size++;
+    qDebug() << "size: " << size;
 }
 
 template <typename sTYPE>
@@ -42,6 +45,7 @@ void mstack<sTYPE>::pop() {
         if (top == nullptr) {
             throw std::out_of_range("Out of range");
         }
+
         mstack* q = top;
         top = top->next;
         delete q;
@@ -49,7 +53,21 @@ void mstack<sTYPE>::pop() {
     catch (std::exception &errmsg) {
          qDebug() << errmsg.what();
     }
-    qDebug() << "pop end top:   " << top;
+    size--;
+    qDebug() << "pop end top:   " << top << "size: " << size;
 }
 
+template <typename sTYPE>
+void mstack<sTYPE>::print() {
+    mstack *q = top;
+    while (q){
+        qDebug() << q->data;
+        q = q->next;
+    }
+}
+
+template <typename sTYPE>
+mstack<sTYPE>::~mstack() {
+    delete top;
+}
 #endif // MSTACK_H
