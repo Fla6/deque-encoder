@@ -18,4 +18,5 @@ SOURCES += main.cpp
 
 HEADERS += \
     mqueue.h \
-    mstack.h
+    mstack.h \
+    node.h
