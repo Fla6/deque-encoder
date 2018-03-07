@@ -8,7 +8,7 @@ public:
     Node *next;
     Node (sTYPE value): data(value),  next(nullptr)
     {}
-    Node (sTYPE value, Node* node): data(value),  next(node)
+    Node (sTYPE value, Node* top): data(value),  next(top)
     {}
 };
 

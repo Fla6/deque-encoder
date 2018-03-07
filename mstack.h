@@ -31,15 +31,24 @@ void mstack<sTYPE>::push(sTYPE value) {
     }
     qDebug() << "2 " << top;
 }
-
+//Доделать!
 template <typename sTYPE>
 void mstack<sTYPE>::pop() {
-
+    if (top == nullptr) {
+        return;
+    }
+    Node<sTYPE>* q = top;
+    top = top->next;
+    delete q;
 }
 
 template <typename sTYPE>
 void mstack<sTYPE>::print() {
-
+    Node<sTYPE>* q = top;
+    while (q) {
+        qDebug() << "- " << q->data;
+        q = q->next;
+    }
 }
 
 template <typename sTYPE>
