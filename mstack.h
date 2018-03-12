@@ -7,8 +7,6 @@
 template <typename sTYPE>
 class mstack {
 public:
-//    sTYPE data; //данные с элементе
-//    mstack *next; //указатель на след эл стека
     Node<sTYPE> *top; //указатель на низ стека
     int size=0;
 
@@ -29,17 +27,20 @@ void mstack<sTYPE>::push(sTYPE value) {
         Node<sTYPE>* q = new Node<sTYPE>(value,top);
         top = q;
     }
+    size++;
     qDebug() << "2 " << top;
 }
-//Доделать!
+
 template <typename sTYPE>
 void mstack<sTYPE>::pop() {
     if (top == nullptr) {
+        qDebug()<<"Stack is empty or Out of range";
         return;
     }
     Node<sTYPE>* q = top;
     top = top->next;
     delete q;
+    size--;
 }
 
 template <typename sTYPE>
@@ -49,10 +50,14 @@ void mstack<sTYPE>::print() {
         qDebug() << "- " << q->data;
         q = q->next;
     }
+    qDebug() << "stack size is " << size;
 }
+
 
 template <typename sTYPE>
 mstack<sTYPE>::~mstack() {
-
+    while (size>0) {
+        pop();
+    }
 }
 #endif // MSTACK_H

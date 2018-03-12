@@ -1,24 +1,20 @@
 #include <iostream>
 #include "mstack.h"
+#include "mqueue.h"
+#include "mdeque.h"
 
 using namespace std;
 
 int main () {
 
     cout << "hi";
-    mstack <int> obj;
-    obj.push(3);
-    obj.push(22);
-     obj.print();
+    mstack <int> obj_stack;
+    obj_stack.push(3);
+    obj_stack.print();
+    obj_stack.pop();
+    obj_stack.pop();
 
-    obj.pop();
-    obj.push(8);
-    //obj.print();
-
-    obj.push(3333);
-
-
-    obj.print();
+    mqueue <int> obj_queue;
 
     return 0;
 }
