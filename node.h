@@ -8,7 +8,8 @@ class Node {
 public:
     sTYPE data;
     Node *next;
-    Node (sTYPE value): data(value),  next(nullptr)
+    Node *prev; //Используется для дека
+    Node (sTYPE value): data(value),  next(nullptr) , prev(nullptr)
     {}
     Node (sTYPE value, Node* top): data(value),  next(top)
     {}

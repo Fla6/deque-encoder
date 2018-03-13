@@ -32,18 +32,18 @@ void mqueue<sTYPE>::push(sTYPE value) {
     size++;
     qDebug() << "2 " << end;
 }
-
+//ИСПРАВИТЬ!!!!
 template <typename sTYPE>
 void mqueue<sTYPE>::pop() {
     if (start == nullptr) {
         qDebug()<<"Queue is empty or Out of range" << size;
+        size=0; //ИСПРАВИТЬ!!!!
         return;
     }
     Node<sTYPE>* q = start;
     start = start->next;
-    delete q;
     size--;
-
+    delete q;
 }
 
 template <typename sTYPE>
