@@ -39,8 +39,8 @@ void mstack<sTYPE>::pop() {
     }
     Node<sTYPE>* q = top;
     top = top->next;
-    delete q;
     size--;
+    delete q;
 }
 
 template <typename sTYPE>
@@ -50,7 +50,7 @@ void mstack<sTYPE>::print() {
         qDebug() << "- " << q->data;
         q = q->next;
     }
-    qDebug() << "stack size is " << size;
+    qDebug() << "Stack size is " << size;
 }
 
 
