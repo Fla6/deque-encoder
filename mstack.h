@@ -20,7 +20,6 @@ public:
 
 template <typename sTYPE>
 void mstack<sTYPE>::push(sTYPE value) {
-    qDebug() << "1 " << top;
     if  (top == nullptr) {
         top = new Node<sTYPE> (value);
     } else {
@@ -28,7 +27,6 @@ void mstack<sTYPE>::push(sTYPE value) {
         top = q;
     }
     size++;
-    qDebug() << "2 " << top;
 }
 
 template <typename sTYPE>

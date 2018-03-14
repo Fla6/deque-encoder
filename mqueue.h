@@ -20,24 +20,21 @@ public:
 
 template <typename sTYPE>
 void mqueue<sTYPE>::push(sTYPE value) {
-    qDebug() << "1 " << end;
     if  (end == nullptr) {
         end = new Node<sTYPE> (value);
-        start = new Node<sTYPE> (value);
+        start = end;
     } else {
         Node<sTYPE>* q = new Node<sTYPE>(value);
         end->next = q;
         end = q;
     }
     size++;
-    qDebug() << "2 " << end;
 }
-//ИСПРАВИТЬ!!!!
+
 template <typename sTYPE>
 void mqueue<sTYPE>::pop() {
     if (start == nullptr) {
         qDebug()<<"Queue is empty or Out of range" << size;
-        size=0; //ИСПРАВИТЬ!!!!
         return;
     }
     Node<sTYPE>* q = start;

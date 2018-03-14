@@ -23,5 +23,13 @@ int main () {
     obj_queue.pop();
     obj_queue.print();
 
+    mdeque <int> obj_deque;
+    obj_deque.push_prev(2);
+    obj_deque.push_prev(1);
+    obj_deque.push_next(56);
+
+    obj_deque.push_next(3);
+    obj_deque.print();
+
     return 0;
 }
