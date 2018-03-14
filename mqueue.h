@@ -2,7 +2,6 @@
 #define MQUEUE_H
 
 #include "node.h"
-#include <QDebug>
 
 template <typename sTYPE>
 class mqueue {
@@ -34,7 +33,7 @@ void mqueue<sTYPE>::push(sTYPE value) {
 template <typename sTYPE>
 void mqueue<sTYPE>::pop() {
     if (start == nullptr) {
-        qDebug()<<"Queue is empty or Out of range" << size;
+        std::cout << "\n ERROR: Queue is empty " << size << "\n";
         return;
     }
     Node<sTYPE>* q = start;
@@ -47,10 +46,10 @@ template <typename sTYPE>
 void mqueue<sTYPE>::print() {
     Node<sTYPE>* q = end;
     while (q) {
-        qDebug() << "- " << q->data;
+        std::cout << " " << q->data;
         q = q->next;
     }
-    qDebug() << "Queue size is " << size;
+    std::cout  << "\n Queue size is " << size << "\n";
 }
 
 template <typename sTYPE>

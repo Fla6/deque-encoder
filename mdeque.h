@@ -12,16 +12,16 @@ public:
     int  size=0;
     mdeque(): start(nullptr), end (nullptr)
     {}
-    void push_prev(sTYPE);
-    void push_next(sTYPE);
-    void pop_prev();
-    void pop_next();
+    void push_end(sTYPE);
+    void push_start(sTYPE);
+    void pop_start();
+    void pop_end();
     void print();
     ~mdeque();
 };
 
 template <typename sTYPE>
-void mdeque<sTYPE>::push_prev(sTYPE value) {
+void mdeque<sTYPE>::push_end(sTYPE value) {
     if (end == nullptr) {
         start = new Node<sTYPE>(value);
         end = start;
@@ -37,7 +37,7 @@ void mdeque<sTYPE>::push_prev(sTYPE value) {
 }
 
 template <typename sTYPE>
-void mdeque<sTYPE>::push_next(sTYPE value) {
+void mdeque<sTYPE>::push_start(sTYPE value) {
     if (start == nullptr) {
         start = new Node<sTYPE>(value);
         end = start;
@@ -52,27 +52,47 @@ void mdeque<sTYPE>::push_next(sTYPE value) {
 }
 
 template <typename sTYPE>
-void mdeque<sTYPE>::pop_prev() {
-
+void mdeque<sTYPE>::pop_end() {
+    if (end == nullptr) {
+        qDebug()<<"Deque is empty" << size;
+        return;
+    }
+    Node<sTYPE> * q = end;
+    end = end->prev;
+    end->next=nullptr;
+    size--;
+    delete q;
 }
 
 template <typename sTYPE>
-void mdeque<sTYPE>::pop_next() {
-
+void mdeque<sTYPE>::pop_start() {
+    if (start == nullptr) {
+        std::cout << "\n ERROR: Deque is empty " << size << "\n";
+        return;
+    }
+    Node<sTYPE> * q = start;
+    start = start->next;
+    start->prev=nullptr;
+    size--;
+    delete q;
 }
 
 template <typename sTYPE>
 void mdeque<sTYPE>::print() {
     Node<sTYPE>* q = start;
     while (q) {
-        qDebug() << "- " << q->data;
+        std::cout << " " << q->data;
         q = q->next;
     }
-    qDebug() << "Stack size is " << size;
+    std::cout  << "\n Deque size is " << size << "\n";
 }
 
 template <typename sTYPE>
 mdeque<sTYPE>::~mdeque() {
+    while (size > 0) {
+        pop_end();
+        qDebug() << "THATS ALL FOLKS " << size;
+    }
 
 }
 #endif // MDEQUE_H

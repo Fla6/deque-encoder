@@ -1,8 +1,7 @@
-#ifndef MSTACK_H
+﻿#ifndef MSTACK_H
 #define MSTACK_H
 
 #include "node.h"
-#include <QDebug>
 
 template <typename sTYPE>
 class mstack {
@@ -32,7 +31,7 @@ void mstack<sTYPE>::push(sTYPE value) {
 template <typename sTYPE>
 void mstack<sTYPE>::pop() {
     if (top == nullptr) {
-        qDebug()<<"Stack is empty or Out of range";
+        std::cout << "\n ERROR: Stack is empty " << "\n";
         return;
     }
     Node<sTYPE>* q = top;
@@ -45,10 +44,10 @@ template <typename sTYPE>
 void mstack<sTYPE>::print() {
     Node<sTYPE>* q = top;
     while (q) {
-        qDebug() << "- " << q->data;
+        std::cout << " " << q->data;
         q = q->next;
     }
-    qDebug() << "Stack size is " << size;
+    std::cout << "\n Stack size is " << size << "\n";
 }
 
 

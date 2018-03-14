@@ -7,7 +7,6 @@ using namespace std;
 
 int main () {
 
-    cout << "hi";
     mstack <int> obj_stack;
     obj_stack.push(3);
     obj_stack.pop();
@@ -24,12 +23,16 @@ int main () {
     obj_queue.print();
 
     mdeque <int> obj_deque;
-    obj_deque.push_prev(2);
-    obj_deque.push_prev(1);
-    obj_deque.push_next(56);
+    obj_deque.push_end(2);
+    obj_deque.push_end(1);
+    obj_deque.push_start(56);
+    obj_deque.push_start(3);
 
-    obj_deque.push_next(3);
+    obj_deque.pop_end();
+    obj_deque.pop_start();
     obj_deque.print();
+
+    cout << "hi";
 
     return 0;
 }
