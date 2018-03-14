@@ -1,4 +1,8 @@
 # Deque encoder
 
->> written on C++
->> including 3 classes: stack(LIFO), queue and deque
+Goals
+-----------
+* Stack (LIFO)
+* Queue (FIFO)
+* Deque
+* Encoder

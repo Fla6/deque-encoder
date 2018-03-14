@@ -1,7 +1,7 @@
 #ifndef MDEQUE_H
 #define MDEQUE_H
 
-#include "node.h"
+#include "node.h" //Anomalous Materials
 #include <QDebug>
 
 template <typename sTYPE>
@@ -32,8 +32,6 @@ void mdeque<sTYPE>::push_end(sTYPE value) {
         end = q;
     }
     size++;
-    qDebug() << "new  push end " << end->data;
-
 }
 
 template <typename sTYPE>
@@ -48,13 +46,12 @@ void mdeque<sTYPE>::push_start(sTYPE value) {
         start = q;
     }
     size++;
-    qDebug() << "new  push start " << start->data;
 }
 
 template <typename sTYPE>
 void mdeque<sTYPE>::pop_end() {
     if (end == nullptr) {
-        qDebug()<<"Deque is empty" << size;
+        std::cout << "\n ERROR: Deque is empty " << size << "\n";
         return;
     }
     Node<sTYPE> * q = end;
@@ -62,6 +59,11 @@ void mdeque<sTYPE>::pop_end() {
     end->next=nullptr;
     size--;
     delete q;
+    if (end->prev==nullptr) {
+        start = nullptr;
+    }
+
+    //if (end)  else start = nullptr;
 }
 
 template <typename sTYPE>
@@ -75,6 +77,7 @@ void mdeque<sTYPE>::pop_start() {
     start->prev=nullptr;
     size--;
     delete q;
+    //if (!end) end = nullptr;
 }
 
 template <typename sTYPE>
@@ -90,9 +93,11 @@ void mdeque<sTYPE>::print() {
 template <typename sTYPE>
 mdeque<sTYPE>::~mdeque() {
     while (size > 0) {
+        qDebug() << size << " - " << end->prev << " - " << end->next;
+        qDebug() << size << " - " << start->prev << " - " << start->next;
         pop_end();
-        qDebug() << "THATS ALL FOLKS " << size;
     }
+    qDebug() << "Деструктор сработал! " << size;
 
 }
 #endif // MDEQUE_H
