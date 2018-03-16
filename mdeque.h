@@ -16,7 +16,8 @@ public:
     void push_start(sTYPE);
     void pop_start();
     void pop_end();
-    void print();
+    void print_left_right();
+    void print_right_left();
     ~mdeque();
 };
 
@@ -56,14 +57,14 @@ void mdeque<sTYPE>::pop_end() {
     }
     Node<sTYPE> * q = end;
     end = end->prev;
-    end->next=nullptr;
+    //end->next=nullptr;
     size--;
     delete q;
-    if (end->prev==nullptr) {
-        start = nullptr;
-    }
 
-    //if (end)  else start = nullptr;
+    if (end!=nullptr)
+        end->next=nullptr;
+    else
+        start = nullptr;
 }
 
 template <typename sTYPE>
@@ -74,14 +75,17 @@ void mdeque<sTYPE>::pop_start() {
     }
     Node<sTYPE> * q = start;
     start = start->next;
-    start->prev=nullptr;
     size--;
     delete q;
-    //if (!end) end = nullptr;
+
+    if (start!=nullptr)
+        start->prev=nullptr;
+    else
+        end = nullptr;
 }
 
 template <typename sTYPE>
-void mdeque<sTYPE>::print() {
+void mdeque<sTYPE>::print_left_right() {
     Node<sTYPE>* q = start;
     while (q) {
         std::cout << " " << q->data;
@@ -91,13 +95,18 @@ void mdeque<sTYPE>::print() {
 }
 
 template <typename sTYPE>
-mdeque<sTYPE>::~mdeque() {
-    while (size > 0) {
-        qDebug() << size << " - " << end->prev << " - " << end->next;
-        qDebug() << size << " - " << start->prev << " - " << start->next;
-        pop_end();
+void mdeque<sTYPE>::print_right_left() {
+    Node<sTYPE>* q = end;
+    while (q) {
+        std::cout << " " << q->data;
+        q = q->prev;
     }
-    qDebug() << "Деструктор сработал! " << size;
+    std::cout  << "\n Deque size is " << size << "\n";
+}
 
+template <typename sTYPE>
+mdeque<sTYPE>::~mdeque() {
+    while (size > 0)
+        pop_end();
 }
 #endif // MDEQUE_H
