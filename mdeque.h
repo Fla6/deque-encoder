@@ -6,9 +6,10 @@
 
 template <typename sTYPE>
 class mdeque {
-public:
+private:
     Node<sTYPE> *start; //указатель на начало дека
     Node<sTYPE> *end; //указатель на конец дека
+public:
     int  size=0;
     mdeque(): start(nullptr), end (nullptr)
     {}
@@ -18,6 +19,8 @@ public:
     void pop_end();
     void print_left_right();
     void print_right_left();
+    sTYPE r_end();
+    sTYPE r_start();
     ~mdeque();
 };
 
@@ -88,17 +91,27 @@ template <typename sTYPE>
 void mdeque<sTYPE>::print_left_right() {
     Node<sTYPE>* q = start;
     while (q) {
-        std::cout << " " << q->data;
+        std::cout << "\'" << q->data<< "\'";
         q = q->next;
     }
     std::cout  << "\n Deque size is " << size << "\n";
 }
 
 template <typename sTYPE>
+sTYPE mdeque<sTYPE>::r_end() {
+    return end->data;
+}
+
+template <typename sTYPE>
+sTYPE mdeque<sTYPE>::r_start() {
+    return start->data;
+}
+
+template <typename sTYPE>
 void mdeque<sTYPE>::print_right_left() {
     Node<sTYPE>* q = end;
     while (q) {
-        std::cout << " " << q->data;
+        std::cout << "" << q->data<< "\'";
         q = q->prev;
     }
     std::cout  << "\n Deque size is " << size << "\n";

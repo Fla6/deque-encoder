@@ -5,10 +5,10 @@
 
 template <typename sTYPE>
 class mstack {
-public:
+private:
     Node<sTYPE> *top; //указатель на низ стека
+public:
     int size=0;
-
     mstack (): top(nullptr)
     {}
     void push (sTYPE);

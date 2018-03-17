@@ -5,9 +5,10 @@
 
 template <typename sTYPE>
 class mqueue {
-public:
+private:
     Node<sTYPE> *start; //указатель на начало очереди
     Node<sTYPE> *end; //указатель на конец очереди
+public:
     int  size=0;
     mqueue (): start(nullptr), end (nullptr)
     {}
