@@ -9,13 +9,11 @@ mdeque <char> * obj_deque = new mdeque<char>;
 char switcher (char cc);
 
 int main () {
+
     std::ifstream file_deque("deque.txt"); //символы дека
     std::ifstream file_input("input.txt"); //исходный текст
     std::ofstream file_output("output.txt"); //зашифрованный текст
 
-
-    mdeque <char> * obj_input = new mdeque<char>;
-    //Считывание элеметов дека
     char rd;
     if (file_deque.is_open()) {
         while (file_deque.get(rd)) {
@@ -24,23 +22,13 @@ int main () {
         }
     } else return 1;
 
-    //Вывод на экран, элементов дека
-    obj_deque->print_left_right();
-
-
-
-
     char ri;
-    char temp;
     if (file_input.is_open()) {
         while (file_input.get(ri)) {
         if (ri!='\n')  {
             for (int i=0; i < obj_deque->size; i++) {
                 char ch = obj_deque->r_end();
-                std::cout << "\n" << "ri = " << ri << "  ch =" << ch;
                 if (ri==ch) {
-                    std::cout << "\n match!";
-                    //file_output << switcher(ri);
                     ri = switcher(ri);
                     break;
                 } else {
@@ -55,21 +43,7 @@ int main () {
         }
     } else return 1;
 
-
-
-    std::cout << "\n";
-    obj_deque->print_left_right();
-
-
-
-
-
-
-
     file_input.close();
-    //Вывод в файл output
-    //std::ofstream file_output("output.txt"); //зашифрованный текст
-
     file_output.close();
     return 0;
 }

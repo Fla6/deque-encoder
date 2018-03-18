@@ -22,7 +22,8 @@ void mstack<sTYPE>::push(sTYPE value) {
     if  (top == nullptr) {
         top = new Node<sTYPE> (value);
     } else {
-        Node<sTYPE>* q = new Node<sTYPE>(value,top);
+        Node<sTYPE>* q = new Node<sTYPE>(value);
+        q->next = top;
         top = q;
     }
     size++;

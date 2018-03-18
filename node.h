@@ -13,8 +13,6 @@ public:
     Node *prev; //Используется для дека
     Node (sTYPE value): data(value),  next(nullptr) , prev(nullptr)
     {}
-    Node (sTYPE value, Node* top): data(value),  next(top)
-    {}
 };
 
 #endif // NODE_H

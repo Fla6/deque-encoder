@@ -2,7 +2,6 @@
 #define MDEQUE_H
 
 #include "node.h" //Anomalous Materials
-#include <QDebug>
 
 template <typename sTYPE>
 class mdeque {
@@ -60,7 +59,6 @@ void mdeque<sTYPE>::pop_end() {
     }
     Node<sTYPE> * q = end;
     end = end->prev;
-    //end->next=nullptr;
     size--;
     delete q;
 
